@@ -1,0 +1,16 @@
+name: hf-env
+channels:
+  - conda-forge
+  - huggingface
+  - defaults
+dependencies:
+  - python=3.10.0
+  - pip:
+      - gradio==3.39.0
+      - huggingface-hub==0.20.1
+      - tqdm==4.65.0
+      - python-dotenv==1.0.0
+      - ipykernel==6.28.0
+      - torch==2.0.1
+      - transformers==4.36.2
+prefix: /Users/shlba/miniconda3/envs
