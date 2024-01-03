@@ -17,7 +17,7 @@ chat_prompt = ChatPromptTemplate.from_messages([
 ])
 
 messages = chat_prompt.format_messages(input_language="English", 
-                                        output_language="French", 
+                                        output_language="Spanish", 
                                         text="I love programming.")
 result = chat_model.predict_messages(messages)
 print(result.content)

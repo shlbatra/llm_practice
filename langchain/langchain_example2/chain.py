@@ -24,5 +24,5 @@ chat_prompt = ChatPromptTemplate.from_messages([
 ])
 
 chain = chat_prompt | chat_model | CommaSeparatedListOutputParser()
-result = chain.invoke({"text": "colors"})
+result = chain.invoke({"text": "latin dance forms"})
 print(result)

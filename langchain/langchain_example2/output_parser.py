@@ -30,4 +30,8 @@ result = chat_model.predict_messages(messages)
 parsed = AnswerOutputParser().parse(result.content)
 steps, answer = parsed
 
-print(steps, answer)
+print(result.content)
+print("\n\n\n")
+print(answer)
+print("\n\n\n")
+print(steps)
