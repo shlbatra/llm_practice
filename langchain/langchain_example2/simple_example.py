@@ -8,5 +8,5 @@ api_key = os.getenv("OPENAI_API_KEY")
 
 chat_model = ChatOpenAI(openai_api_key=api_key)
 
-result = chat_model.predict("hi!")
+result = chat_model.predict("hi! how are you ?")
 print(result)
