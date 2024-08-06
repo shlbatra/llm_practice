@@ -3,7 +3,6 @@ from streamlit.runtime.uploaded_file_manager import UploadedFile
 
 import text_to_speech as tts
 from explainer import retrieve_code_explanation, retrieve_code_language
-import dotenv
 
 def display_header() -> None:
     st.title("Welcome to Code Explainer")
@@ -42,7 +41,6 @@ def choose_voice():
 
 
 def main() -> None:
-    dotenv.load_dotenv()
 
     display_header()
 

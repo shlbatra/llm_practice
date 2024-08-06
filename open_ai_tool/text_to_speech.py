@@ -4,6 +4,9 @@ from typing import BinaryIO
 
 import requests
 from requests import Response
+# import dotenv
+
+# dotenv.load_dotenv()
 
 API_KEY = os.getenv("ELEVENLABS_API_KEY")
 BASE_URL = "https://api.elevenlabs.io"

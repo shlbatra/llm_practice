@@ -4,7 +4,7 @@ from functools import partial
 import openai
 import dotenv
 
-dotenv.load_dotenv()
+# dotenv.load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
@@ -29,10 +29,10 @@ def get_code_info(question: str, code: str) -> str:
 
 retrieve_code_language = partial(
     get_code_info,
-    question="Can you explain to me in what language this code is written?",
+    question="Can you explain to me in what language this code is written in 1 word?",
 )
 
 retrieve_code_explanation = partial(
     get_code_info,
-    question="Can you explain to me what this code base does in a few words?",
+    question="Can you explain to me what this code base does in a paragraph?",
 )
