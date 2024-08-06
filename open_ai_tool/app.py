@@ -42,6 +42,8 @@ def choose_voice():
 
 def main() -> None:
 
+    ts = False
+
     display_header()
 
     selected_voice = choose_voice()
@@ -50,32 +52,37 @@ def main() -> None:
         with st.spinner(text="Let me think for a while..."):
             language = retrieve_code_language(code=code_to_explain)
             explanation = retrieve_code_explanation(code=code_to_explain)
-
+        
         with st.spinner(text="Give me a little bit more time, this code is complex..."):
-            tts.convert_text_to_mp3(
-                message=language, voice_name=selected_voice, mp3_filename="language.mp3"
-            )
-            
+                if ts:
+                    tts.convert_text_to_mp3(
+                        message=language, voice_name=selected_voice, mp3_filename="language.mp3"
+                    )
+                
         with st.spinner(
             text=(
                 "I've got the language! "
                 "I'm thinking about how to explain to you in a few words now..."
             )
         ):
-            tts.convert_text_to_mp3(
-                message=explanation,
-                voice_name=selected_voice,
-                mp3_filename="explanation.mp3",
-            )
+                if ts:
+                     
+                    tts.convert_text_to_mp3(
+                        message=explanation,
+                        voice_name=selected_voice,
+                        mp3_filename="explanation.mp3",
+                    )
 
         st.success("Uhg, that was hard! But here is your explanation")
         st.warning("Remember to turn on your audio!")
 
         st.markdown(f"**Language:** {language}")
-        st.audio("language.mp3")
+        if ts:
+            st.audio("language.mp3")
 
         st.markdown(f"**Explanation:** {explanation}")
-        st.audio("explanation.mp3")
+        if ts:
+            st.audio("explanation.mp3")
 
 
 if __name__ == "__main__":

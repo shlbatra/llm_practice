@@ -33,9 +33,11 @@ def list_available_names() -> list[str]:
 
 
 def convert_text_to_mp3(message: str, voice_name: str, mp3_filename: str) -> None:
+
     voices_response = requests.get(
         f"{BASE_URL}/v1/voices", params={"xi-api-key": API_KEY}, timeout=5
     )
+
 
     voice_id = _get_id_from_name(response=voices_response, name=voice_name)
 
@@ -43,6 +45,7 @@ def convert_text_to_mp3(message: str, voice_name: str, mp3_filename: str) -> Non
         "text": message,
         "voice_settings": {"stability": 0.75, "similarity_boost": 0.75},
     }
+
 
     text_to_speech_response = requests.post(
         f"{BASE_URL}/v1/text-to-speech/{voice_id}/stream",
@@ -53,7 +56,6 @@ def convert_text_to_mp3(message: str, voice_name: str, mp3_filename: str) -> Non
 
     while text_to_speech_response.status_code != 200:
         time.sleep(5)
-        print("Trying again, the API maybe busy...")
         text_to_speech_response = requests.post(
             f"{BASE_URL}/v1/text-to-speech/{voice_id}/stream",
             headers={"voice_id": voice_id, "xi-api-key": API_KEY},
